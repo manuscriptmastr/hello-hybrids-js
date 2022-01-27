@@ -1,6 +1,5 @@
+import { CHEESE_BURGER } from './items.js';
+
 export default {
-  items: [
-    { name: "Hamburger", price: "$10.00", quantity: 1 },
-    { name: "Avocado", price: "$6.50", quantity: 3 },
-  ],
+  cart: [{ item: CHEESE_BURGER, quantity: 1 }],
 };

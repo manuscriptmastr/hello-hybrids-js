@@ -1,12 +1,19 @@
-import { define, html, store } from "https://unpkg.com/hybrids@^7";
-import GlobalState from "./store.js";
+import { define, html, store } from 'https://unpkg.com/hybrids@^7';
+import { multiply, sum } from './money.js';
+import GlobalState from './store.js';
 
 define({
-  tag: "cart-details",
-  items: () => store.get(GlobalState).items,
-  render: ({ items }) => html`
+  tag: 'cart-details',
+  cart: () => store.get(GlobalState).cart,
+  total: ({ cart }) =>
+    sum(cart.map(({ item: { price }, quantity }) => multiply(price, quantity))),
+  render: ({ cart, total }) => html` <h2>
+      ${cart.length ? `Your cart total: ${total}` : 'Your cart is empty'}
+    </h2>
     <ul>
-      ${items.map(({ name, price }) => html`<li>${name}: ${price}</li>`)}
-    </ul>
-  `,
+      ${cart.map(
+        ({ item: { name, price }, quantity }) =>
+          html`<li>${name}: ${price}x${quantity}</li>`
+      )}
+    </ul>`,
 });
