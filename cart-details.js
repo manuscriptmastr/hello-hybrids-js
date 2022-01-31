@@ -12,9 +12,13 @@ define({
       ${cart.length ? `Your cart total: ${total}` : 'Your cart is empty'}
     </h2>
     <ul>
-      ${cart.map(
-        ({ item: { name, price }, quantity }) =>
-          html`<li>${name}: ${price}x${quantity}</li>`
+      ${cart.map(({ item: { name, price, plu }, quantity }) =>
+        html`<cart-row
+          name="${name}"
+          price="${price}"
+          plu="${plu}"
+          quantity="${quantity}"
+        />`.key(name)
       )}
     </ul>`,
 });

@@ -10,16 +10,30 @@ const setQuantity = curry((quantityOrFn, row) => ({
       : quantityOrFn,
 }));
 
-export const addToCartByPlu = curry((store, plu) => {
-  const item = ITEMS.find((item) => item.plu === plu);
-  const { cart } = store;
-  const newCart = cart.find(({ item }) => item.plu === plu)
-    ? cart.map((row) =>
-        row.item.plu === plu ? setQuantity((x) => x + 1, row) : row
-      )
-    : [...cart, { item, quantity: 1 }];
+const updateItemByPlu = curry((fn, plu, cart) => {
+  const exists = cart.find(({ item }) => item.plu === plu);
+  if (!exists) {
+    throw new Error(`Item with plu '${plu}' does not exist in cart.`);
+  }
+  return cart.map((row) => (row.item.plu === plu ? fn(row) : row));
+});
 
-  store.cart = newCart;
+export const setQuantityByPlu = curry((store, plu, quantity) => {
+  store.cart = updateItemByPlu(setQuantity(quantity), plu, store.cart);
+});
+
+export const addItemByPlu = curry((store, plu) => {
+  const item = ITEMS.find((item) => item.plu === plu);
+  store.cart = [...store.cart, { item, quantity: 1 }];
+});
+
+export const removeItemByPlu = curry((store, plu) => {
+  const exists = store.cart.find(({ item }) => item.plu === plu);
+  if (!exists) {
+    throw new Error(`Item with plu '${plu}' does not exist in cart.`);
+  }
+
+  store.cart = store.cart.filter(({ item }) => item.plu !== plu);
 });
 
 export default define({

@@ -1,9 +1,9 @@
 import { define, html, parent } from 'https://unpkg.com/hybrids@^7';
 import { curry } from 'https://unpkg.com/ramda@0.28.0/es';
 import ITEMS from './items.js';
-import AppStore, { addToCartByPlu } from './store.js';
+import AppStore, { addItemByPlu } from './store.js';
 
-const handleClick = curry((plu, { store }) => addToCartByPlu(store, plu));
+const handleClick = curry((plu, { store }) => addItemByPlu(store, plu));
 
 define({
   tag: 'app-menu',
