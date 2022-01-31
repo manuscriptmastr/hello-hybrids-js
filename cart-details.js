@@ -1,10 +1,11 @@
-import { define, html, store } from 'https://unpkg.com/hybrids@^7';
+import { define, html, parent } from 'https://unpkg.com/hybrids@^7';
 import { multiply, sum } from './money.js';
-import GlobalState from './store.js';
+import AppStore from './store.js';
 
 define({
   tag: 'cart-details',
-  cart: () => store.get(GlobalState).cart,
+  store: parent(AppStore),
+  cart: ({ store }) => store.cart,
   total: ({ cart }) =>
     sum(cart.map(({ item: { price }, quantity }) => multiply(price, quantity))),
   render: ({ cart, total }) => html` <h2>
