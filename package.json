@@ -1,0 +1,23 @@
+{
+  "name": "hello-web-components",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "serve .",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuscriptmastr/hello-web-components.git"
+  },
+  "author": "Joshua Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuscriptmastr/hello-web-components/issues"
+  },
+  "homepage": "https://github.com/manuscriptmastr/hello-web-components#readme",
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
+    "cypress": "^9.4.1"
+  }
+}
