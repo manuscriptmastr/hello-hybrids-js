@@ -31,5 +31,8 @@ serve .
 11. Cons
     1. Defining props feels a little clumsy, particular if they are primitives
     2. `html` util feels like it's doing too much. There's `html.resolve()`, `html.css()`, etc. These interfaces feel a little faddy/fragile.
-12. Not sure
+12. Not sure/outstanding questions
     1. Referring to object/DOM ID's is both interesting and weird, but it's at least vanilla!
+    2. Wondering if there's a way to accomplish:
+       1. Dynamic props like React's spread operator
+       2. "Two-way" data _packaging_ (aka. `v-model` in Vue, or a packaged getter/setter)
