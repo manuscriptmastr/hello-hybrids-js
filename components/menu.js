@@ -1,6 +1,6 @@
 import { define, html, parent } from 'https://unpkg.com/hybrids@^7';
 import { curry } from 'https://unpkg.com/ramda@0.28.0/es';
-import ITEMS from './items.js';
+import ITEMS from '../items.js';
 import AppStore, { addItemByPlu } from './store.js';
 
 const styles = html`<style>

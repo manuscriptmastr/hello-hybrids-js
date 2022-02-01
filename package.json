@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "serve .",
+    "start": "open http://localhost:3000; serve .",
     "cypress:open": "cypress open"
   },
   "repository": {

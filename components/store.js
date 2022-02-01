@@ -1,6 +1,6 @@
 import { define } from 'https://unpkg.com/hybrids@^7';
 import { curry } from 'https://unpkg.com/ramda@0.28.0/es';
-import ITEMS from './items.js';
+import ITEMS from '../items.js';
 
 const setQuantity = curry((quantityOrFn, row) => ({
   ...row,
