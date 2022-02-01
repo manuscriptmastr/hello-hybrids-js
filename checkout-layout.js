@@ -7,9 +7,6 @@ const styles = html`<style>
   }
 
   main {
-    --x-spacing: var(--spacing-s);
-    --y-spacing: var(--spacing-m);
-    --y-spacing-grow: clamp(var(--spacing-m), 5vmin, var(--spacing-xl));
     align-items: stretch;
     display: flex;
     flex-direction: column;
@@ -21,8 +18,8 @@ const styles = html`<style>
     background-color: var(--color-neutral-white);
     display: flex;
     flex-direction: column;
-    gap: var(--y-spacing) var(--x-spacing);
-    padding: var(--y-spacing) var(--x-spacing);
+    gap: var(--spacing-m);
+    padding: var(--spacing-m);
   }
 
   .title {
@@ -34,14 +31,14 @@ const styles = html`<style>
     display: flex;
     flex: 1;
     justify-content: center;
-    padding: var(--y-spacing-grow) var(--x-spacing);
+    padding: var(--spacing-m);
   }
 
   .layout {
     --threshold: 26rem;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--y-spacing) var(--x-spacing);
+    gap: var(--spacing-m);
     width: min(100%, 1100px);
   }
 
@@ -51,7 +48,7 @@ const styles = html`<style>
     flex-basis: 0;
     flex-direction: column;
     flex-grow: 999;
-    gap: var(--y-spacing) var(--x-spacing);
+    gap: var(--spacing-m);
     min-width: 50%;
   }
 
@@ -63,7 +60,7 @@ const styles = html`<style>
 
   .sticky {
     position: sticky;
-    top: var(--y-spacing-grow);
+    top: var(--spacing-m);
   }
 </style>`;
 
