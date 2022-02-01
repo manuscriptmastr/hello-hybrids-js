@@ -38,9 +38,10 @@ define({
         ${!cart.length
           ? html`<p>Your cart is empty.</p>`
           : html`<ul>
-              ${cart.map(({ item: { name, price, plu }, quantity }) =>
+              ${cart.map(({ item: { image, name, price, plu }, quantity }) =>
                 html`<li>
                   <cart-row
+                    image="${image}"
                     name="${name}"
                     price="${price}"
                     quantity="${quantity}"

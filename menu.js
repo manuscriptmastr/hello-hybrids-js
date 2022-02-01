@@ -9,15 +9,17 @@ define({
   tag: 'app-menu',
   store: parent(AppStore),
   render: () => html`
-    <h2>Choose from the following:</h2>
-    <ul>
-      ${ITEMS.map(({ name, price, plu }) =>
-        html`<li>
-          <button onclick="${handleClick(plu)}">
-            Buy a ${name} (${price})
-          </button>
-        </li>`.key(plu)
-      )}
-    </ul>
+    <checkout-tile title="Menu">
+      <h3>Choose from the following:</h3>
+      <ul>
+        ${ITEMS.map(({ name, price, plu }) =>
+          html`<li>
+            <button onclick="${handleClick(plu)}">
+              Buy a ${name} (${price})
+            </button>
+          </li>`.key(plu)
+        )}
+      </ul>
+    </checkout-tile>
   `,
 });

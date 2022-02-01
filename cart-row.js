@@ -11,6 +11,14 @@ const styles = html`<style>
     padding: var(--spacing-s);
   }
 
+  img {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--spacing-xs);
+    object-fit: cover;
+    display: block;
+    width: 6rem;
+  }
+
   h3 {
     margin: 0;
   }
@@ -27,12 +35,14 @@ const handleRemove = (host, event) => dispatch(host, 'remove');
 
 define({
   tag: 'cart-row',
+  image: '',
   name: '',
-  quantity: 0,
   price: '$0.00',
-  render: ({ name, quantity, price }) =>
+  quantity: 0,
+  render: ({ image, name, price, quantity }) =>
     html`${styles}
       <article>
+        <img src="${image}" alt="${name}" />
         <h3>${name}: ${price}</h3>
         <select value="${quantity}" onchange="${handleSelect}">
           ${range(1, 11).map(

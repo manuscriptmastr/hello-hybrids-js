@@ -1,17 +1,17 @@
 export const CHEESE_BURGER = {
-  image: 'https://unsplash.com/photos/DHxLfzqhoIk',
+  image: 'assets/cheese-burger.jpg',
   name: 'Cheese Burger',
   plu: 1,
   price: '$10.00',
 };
 export const AVOCADO_TOAST = {
-  image: 'https://unsplash.com/photos/SaWYeuOqEdo',
+  image: 'assets/avocado-toast.jpg',
   name: 'Avocado Toast',
   plu: 2,
   price: '$6.95',
 };
 export const EGGS_BENEDICT = {
-  image: 'https://unsplash.com/photos/4zm5e0ZgYjE',
+  image: 'assets/eggs-benedict.jpg',
   name: 'Eggs Benedict',
   plu: 3,
   price: '$12.75',
