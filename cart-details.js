@@ -1,6 +1,15 @@
 import { define, html, parent } from 'https://unpkg.com/hybrids@^7';
+import { curry } from 'https://unpkg.com/ramda@0.28.0/es';
 import { multiply, sum } from './money.js';
-import AppStore from './store.js';
+import AppStore, { removeItemByPlu, setQuantityByPlu } from './store.js';
+
+const handleQuantity = curry((plu, { store }, { detail }) => {
+  setQuantityByPlu(store, plu, detail);
+});
+
+const handleRemove = curry((plu, { store }, options) => {
+  removeItemByPlu(store, plu);
+});
 
 define({
   tag: 'cart-details',
@@ -16,8 +25,9 @@ define({
         html`<cart-row
           name="${name}"
           price="${price}"
-          plu="${plu}"
           quantity="${quantity}"
+          onquantity="${handleQuantity(plu)}"
+          onremove="${handleRemove(plu)}"
         />`.key(name)
       )}
     </ul>`,

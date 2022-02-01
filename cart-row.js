@@ -1,32 +1,24 @@
-import { define, html, parent } from 'https://unpkg.com/hybrids@^7';
-import { curry, range } from 'https://unpkg.com/ramda@0.28.0/es';
-import AppStore, { removeItemByPlu, setQuantityByPlu } from './store.js';
+import { define, dispatch, html, parent } from 'https://unpkg.com/hybrids@^7';
+import { range } from 'https://unpkg.com/ramda@0.28.0/es';
+import AppStore from './store.js';
 
-const handleSelect = curry((plu, { store }, event) => {
-  setQuantityByPlu(store, plu, parseInt(event.target.value, 10));
-});
+const handleSelect = (host, event) =>
+  dispatch(host, 'quantity', { detail: parseInt(event.target.value, 10) });
 
-const handleRemove = curry((plu, { store }, event) => {
-  event.preventDefault();
-  removeItemByPlu(store, plu);
-});
+const handleRemove = (host, event) => dispatch(host, 'remove');
 
 define({
   tag: 'cart-row',
   name: '',
   quantity: 0,
   price: '$0.00',
-  plu: 0,
   store: parent(AppStore),
-  render: ({ name, quantity, price, plu }) =>
+  render: ({ name, quantity, price }) =>
     html`<li>
-      ${name}: ${price}x<select
-        value="${quantity}"
-        onchange="${handleSelect(plu)}"
-      >
+      ${name}: ${price}x<select value="${quantity}" onchange="${handleSelect}">
         ${range(1, 11).map(
           (opt) => html`<option value="${opt}">${opt}</option>`
         )}</select
-      ><button onclick="${handleRemove(plu)}">x</button>
+      ><button onclick="${handleRemove}">x</button>
     </li>`,
 });
