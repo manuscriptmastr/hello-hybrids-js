@@ -20,6 +20,7 @@ serve .
 8. Events
 9. Persistence
 10. Testing
+    1. Shadow DOM
 11. Pros
     1. Easily get reference to store or DOM by ID. It's just an object or a DOM node. Which means you can easily inspect those values.
     2. Low-level, unopinionated, flexible API's let you write in different styles
