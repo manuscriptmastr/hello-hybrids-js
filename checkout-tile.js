@@ -1,25 +1,60 @@
 import { define, html } from 'https://unpkg.com/hybrids@^7';
 
+const styles = html`<style lang="scss" scoped>
+  .tile {
+    background-color: var(--color-neutral-white);
+    border-radius: var(--spacing-xs);
+    box-shadow: 0 0.25rem 1rem 0 rgba(235, 232, 227, 0.8);
+    overflow: hidden;
+  }
+
+  .tile > * + * {
+    border-top: 1px solid var(--color-neutral-grey-10);
+  }
+
+  .tile-header {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-s);
+    justify-content: space-between;
+    padding: var(--spacing-m);
+  }
+
+  h2 {
+    color: var(--color-neutral-black);
+    font-size: 1.5rem;
+    letter-spacing: normal;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .tile-collapse {
+    color: var(--color-neutral-black);
+    height: var(--spacing-m);
+    width: var(--spacing-m);
+  }
+
+  .tile-body {
+    padding: var(--spacing-m);
+  }
+</style>`;
+
 const toggleExpanded = (host) => (host.isExpanded = !host.isExpanded);
 
 define({
   tag: 'checkout-tile',
   collapsible: false,
-  title: 'Hello world!',
+  title: '',
   id: ({ title }) => title.replaceAll(/\s/g, '-').toLowerCase(),
   isExpanded: true,
-  render: ({ title, id, isExpanded }) => html`<style>
-      .tile {
-        background-color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 0.25rem 1rem 0 rgba(235, 232, 227, 0.8);
-        overflow: hidden;
-      }
-
-      .tile > * + * {
-        border-top: 1px solid black;
-      }
-    </style>
+  render: ({ title, id, isExpanded }) => html` ${styles}
     <section class="tile" aria-label="${title}">
       <div class="tile-header">
         <h2>${title}</h2>

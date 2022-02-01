@@ -7,13 +7,13 @@
     <title>Web Components</title>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body style="background-color: gray">
+  <body>
     <app-store>
-      <header>Hello Web Components</header>
-      <checkout-tile title="Cart Details">
-        <cart-details />
-      </checkout-tile>
-      <app-menu />
+      <checkout-layout title="Checkout">
+        <cart-details></cart-details>
+        <app-menu></app-menu>
+        <order-total slot="sidebar"></order-total>
+      </checkout-layout>
     </app-store>
     <script type="module" src="index.js" async></script>
   </body>
