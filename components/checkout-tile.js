@@ -52,9 +52,9 @@ define({
   id: ({ title }) => title.replaceAll(/\s/g, '-').toLowerCase(),
   isExpanded: true,
   render: ({ title, id, isExpanded }) => html` ${styles}
-    <section class="tile" aria-label="${title}">
+    <section class="tile" aria-labelledby="checkout-tile-${id}">
       <div class="tile-header">
-        <h2>${title}</h2>
+        <h2 id="checkout-tile-${id}">${title}</h2>
         <button
           onclick="${toggleExpanded}"
           aria-expanded="${isExpanded ? 'true' : 'false'}"
