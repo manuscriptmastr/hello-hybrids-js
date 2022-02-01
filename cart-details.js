@@ -29,21 +29,26 @@ define({
   tag: 'cart-details',
   store: parent(AppStore),
   cart: ({ store }) => store.cart,
-  render: ({ cart }) => html`${styles}<checkout-tile title="Cart Details">
-      <ul>
-        ${cart.map(({ item: { name, price, plu }, quantity }) =>
-          html`<li>
-              <cart-row
-                name="${name}"
-                price="${price}"
-                quantity="${quantity}"
-                onquantity="${handleQuantity(plu)}"
-                onremove="${handleRemove(plu)}"
-              />
-            </li>
-
-            <li></li>`.key(name)
-        )}
-      </ul>
-    </checkout-tile>`,
+  itemCount: ({ store }) =>
+    store.cart.map(({ quantity }) => quantity).reduce((a, b) => a + b, 0),
+  title: ({ itemCount }) =>
+    `Cart (${itemCount} ${itemCount === 1 ? 'Item' : 'Items'})`,
+  render: ({ cart, title }) =>
+    html`${styles}<checkout-tile title="${title}">
+        ${!cart.length
+          ? html`<p>Your cart is empty.</p>`
+          : html`<ul>
+              ${cart.map(({ item: { name, price, plu }, quantity }) =>
+                html`<li>
+                  <cart-row
+                    name="${name}"
+                    price="${price}"
+                    quantity="${quantity}"
+                    onquantity="${handleQuantity(plu)}"
+                    onremove="${handleRemove(plu)}"
+                  />
+                </li>`.key(name)
+              )}
+            </ul>`}
+      </checkout-tile>`,
 });
