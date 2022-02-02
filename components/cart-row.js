@@ -47,9 +47,12 @@ define({
       <article>
         <img src="${image}" alt="${name}" />
         <h3>${name}: ${price}</h3>
-        <select value="${quantity}" onchange="${handleSelect}">
+        <select onchange="${handleSelect}">
           ${range(1, 11).map(
-            (opt) => html`<option value="${opt}">${opt}</option>`
+            (opt) =>
+              html`<option selected="${opt === quantity}" value="${opt}">
+                ${opt}
+              </option>`
           )}</select
         ><button onclick="${handleRemove}">x</button>
       </article>`,

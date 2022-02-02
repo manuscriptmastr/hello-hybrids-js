@@ -1,4 +1,3 @@
-import { define } from 'https://unpkg.com/hybrids@^7';
 import { curry } from 'https://unpkg.com/ramda@0.28.0/es';
 import ITEMS from '../items.js';
 
@@ -34,12 +33,4 @@ export const removeItemByPlu = curry((store, plu) => {
   }
 
   store.cart = store.cart.filter(({ item }) => item.plu !== plu);
-});
-
-export default define({
-  tag: 'app-store',
-  cart: {
-    get: (host, value = []) => value,
-    set: (host, value) => value,
-  },
 });

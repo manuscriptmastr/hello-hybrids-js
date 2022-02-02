@@ -5,4 +5,4 @@ import './components/checkout-tile.js';
 import './components/menu.js';
 import './components/order-total.js';
 import './components/sidebar-layout.js';
-import './components/store.js';
+import './store/index.js';
