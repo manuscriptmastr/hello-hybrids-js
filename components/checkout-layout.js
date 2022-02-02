@@ -38,29 +38,15 @@ const styles = html`<style>
     padding: var(--spacing-m);
   }
 
-  .layout {
-    --threshold: 26rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-m);
+  sidebar-layout {
     width: min(100%, 1100px);
   }
 
-  /* "The Sidebar" layout from Every Layout */
-  .not-sidebar {
+  .content {
     display: flex;
-    flex-basis: 0;
     flex-direction: column;
-    flex-grow: 999;
     gap: var(--spacing-m);
-    min-width: 50%;
   }
-
-  .sidebar {
-    flex-basis: var(--threshold);
-    flex-grow: 1;
-  }
-  /* End of "The Sidebar" */
 
   .sticky {
     position: sticky;
@@ -79,16 +65,14 @@ define({
         <slot name="subheader"></slot>
       </section>
       <section class="body">
-        <div class="layout">
-          <div class="not-sidebar">
+        <sidebar-layout gap="var(--spacing-m)" threshold="26rem">
+          <div class="content">
             <slot></slot>
           </div>
-          <aside class="sidebar">
-            <div class="sticky">
-              <slot name="sidebar"></slot>
-            </div>
-          </aside>
-        </div>
+          <div slot="sidebar" class="sticky">
+            <slot name="sidebar"></slot>
+          </div>
+        </sidebar-layout>
       </section>
     </main>
   </div>`,
