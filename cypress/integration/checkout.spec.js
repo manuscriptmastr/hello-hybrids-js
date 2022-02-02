@@ -55,7 +55,7 @@ const testQuantityIs = ({ name }, quantity) => {
     });
 };
 
-const updateQuantity = ({ name }, quantity) => {
+const setQuantity = ({ name }, quantity) => {
   cy.get('cart-details')
     .shadow()
     .contains(name)
@@ -71,6 +71,7 @@ const testOrderTotalIs = (money) => {
 
 describe('Checkout', () => {
   beforeEach(() => {
+    cy.clearSessionStorage();
     cy.visit('/');
   });
   it('displays an empty cart', () => {
@@ -78,12 +79,11 @@ describe('Checkout', () => {
     testOrderTotalIs('$0.00');
   });
   it('allows a user to add and remove an item from the cart', () => {
-    // Add item
     addItemToCart(AVOCADO_TOAST);
     testHasItemInCart(AVOCADO_TOAST);
     testCartCountIs(1);
     testOrderTotalIs(AVOCADO_TOAST.price);
-    // Remove item
+
     removeItemFromCart(AVOCADO_TOAST);
     testCartCountIs(0);
     testOrderTotalIs('$0.00');
@@ -92,7 +92,7 @@ describe('Checkout', () => {
     addItemToCart(AVOCADO_TOAST);
     testQuantityIs(AVOCADO_TOAST, 1);
     testOrderTotalIs(AVOCADO_TOAST.price);
-    updateQuantity(AVOCADO_TOAST, 2);
+    setQuantity(AVOCADO_TOAST, 2);
     testOrderTotalIs(multiply(AVOCADO_TOAST.price, 2));
   });
   it('disallows a user from adding a redundant item to the cart', () => {
@@ -114,8 +114,8 @@ describe('Checkout', () => {
     testOrderTotalIs(
       sum([AVOCADO_TOAST.price, CHEESE_BURGER.price, EGGS_BENEDICT.price])
     );
-    updateQuantity(CHEESE_BURGER, 2);
-    updateQuantity(EGGS_BENEDICT, 3);
+    setQuantity(CHEESE_BURGER, 2);
+    setQuantity(EGGS_BENEDICT, 3);
     testCartCountIs(6);
     testOrderTotalIs(
       sum([
@@ -124,5 +124,22 @@ describe('Checkout', () => {
         multiply(EGGS_BENEDICT.price, 3),
       ])
     );
+  });
+  it("preserves a user's cart when browser refreshes", () => {
+    addItemToCart(AVOCADO_TOAST);
+    setQuantity(AVOCADO_TOAST, 1);
+    addItemToCart(CHEESE_BURGER);
+    setQuantity(CHEESE_BURGER, 2);
+    addItemToCart(EGGS_BENEDICT);
+    setQuantity(EGGS_BENEDICT, 3);
+
+    cy.reload();
+
+    testHasItemInCart(AVOCADO_TOAST);
+    testQuantityIs(AVOCADO_TOAST, 1);
+    testHasItemInCart(CHEESE_BURGER);
+    testQuantityIs(CHEESE_BURGER, 2);
+    testHasItemInCart(EGGS_BENEDICT);
+    testQuantityIs(EGGS_BENEDICT, 3);
   });
 });

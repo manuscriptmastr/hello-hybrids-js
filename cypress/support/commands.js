@@ -25,3 +25,9 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands';
+
+Cypress.Commands.add('clearSessionStorage', () => {
+  cy.window().then((win) => {
+    win.sessionStorage.clear();
+  });
+});
