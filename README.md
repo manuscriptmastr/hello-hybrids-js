@@ -20,6 +20,8 @@ serve .
 7. Store: as a DOM component (Dev Tools)
 8. Events
 9. Persistence
+   - `get()`/`set()`/`connect()` hard to get right
+   - Refactoring so easy
 10. Testing
     1. Shadow DOM
 11. Pros

@@ -1,6 +1,6 @@
 import { define, html, parent } from 'https://unpkg.com/hybrids@^7';
-import { multiply, sum } from '../money.js';
 import AppStore from '../store/index.js';
+import { multiply, sum } from '../utils/money.js';
 
 define({
   tag: 'order-total',
