@@ -22,8 +22,11 @@ const styles = html`<style lang="scss" scoped>
 
   h2 {
     color: var(--color-neutral-black);
+    font-family: 'Playfair Display';
+    font-weight: 400;
     font-size: 1.5rem;
     margin: 0;
+    text-transform: uppercase;
   }
 
   button {

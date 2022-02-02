@@ -27,6 +27,7 @@ const styles = html`<style>
     font-size: 3rem;
     font-weight: 400;
     margin: 0;
+    text-transform: uppercase;
   }
 
   .body {
