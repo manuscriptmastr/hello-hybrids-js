@@ -16,7 +16,6 @@ const styles = html`<style lang="scss" scoped>
     align-items: center;
     display: flex;
     gap: var(--spacing-s);
-    justify-content: space-between;
     padding: var(--spacing-m);
   }
 
@@ -29,50 +28,22 @@ const styles = html`<style lang="scss" scoped>
     text-transform: uppercase;
   }
 
-  button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-  }
-
-  .tile-collapse {
-    color: var(--color-neutral-black);
-    height: var(--spacing-m);
-    width: var(--spacing-m);
-  }
-
   .tile-body {
     padding: var(--spacing-m);
   }
 </style>`;
 
-const toggleExpanded = (host) => (host.isExpanded = !host.isExpanded);
-
 define({
   tag: 'checkout-tile',
-  collapsible: false,
   title: '',
   id: ({ title }) => title.replaceAll(/\s/g, '-').toLowerCase(),
-  isExpanded: true,
-  render: ({ title, id, isExpanded }) => html` ${styles}
+  render: ({ title, id }) => html` ${styles}
     <section class="tile" aria-labelledby="checkout-tile-${id}">
       <div class="tile-header">
         <h2 id="checkout-tile-${id}">${title}</h2>
-        <button
-          onclick="${toggleExpanded}"
-          aria-expanded="${isExpanded ? 'true' : 'false'}"
-          aria-controls="collapse-${id}"
-          aria-label="Collapse"
-        >
-          ${isExpanded ? 'Close' : 'Open'}
-        </button>
       </div>
-      <div id="collapse-${id}">
-        ${isExpanded && html`<slot name="call-to-action"></slot>`}
-        ${isExpanded &&
-        html`<div class="tile-body">
-          <slot></slot>
-        </div>`}
+      <div class="tile-body">
+        <slot></slot>
       </div>
     </section>`,
 });
