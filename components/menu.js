@@ -63,7 +63,6 @@ define({
     })),
   render: ({ items }) => html`${styles}
     <checkout-tile title="Menu">
-      <h2>Choose from the following:</h2>
       <ul>
         ${items.map(({ disabled, image, name, price, plu }) =>
           html`<li>

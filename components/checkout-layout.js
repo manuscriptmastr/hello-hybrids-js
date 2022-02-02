@@ -22,7 +22,10 @@ const styles = html`<style>
     padding: var(--spacing-m);
   }
 
-  .title {
+  h1 {
+    font-family: 'Playfair Display';
+    font-size: 3rem;
+    font-weight: 400;
     margin: 0;
   }
 
