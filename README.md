@@ -17,7 +17,7 @@ serve .
 5. Nested components: slots (different! Also always need closing tags)
    - <checkout-tile>`, `<checkout-layout>`, and `<sidebar-layout>`
 6. Nested components: render props, `connect()`, etc
-   - Unusually difficult to achieve. Can't pass complex data types through as props, can't pass dynamic props through. This makes refactoring into logic/presentation components nigh impossible.
+   - Unusually difficult to achieve. You can always operate on the component object before passing to `define()`, but you can't pass complex data types through as props. (Dynamic props are also difficult, but mostly because we're used to passing them _through_ the template, rather than writing a function that returns `define()`). This makes refactoring into logic/presentation components awkward at best.
 7. Store: as a plain object with `store.get(id)`
 8. Store: as a DOM component (Dev Tools)
 9. Store: with `connect()`
@@ -46,7 +46,8 @@ serve .
     2. `html` util feels like it's doing too much. There's `html.resolve()`, `html.css()`, etc. These interfaces feel a little faddy/fragile.
     3. Community seems rather small. Not much going on in social media, forums, and API documentation could be much more detailed
 17. Not sure/outstanding questions
+    1. This framework brings its own mini-paradigms around the concepts of the store and component refactoring. It has some elegant ways to accomplish these, but feels awkward once you impose other patterns (complex/dynamic props, higher order components) on it.
     1. Referring to object/DOM ID's is both interesting and weird, but it's at least vanilla!
-    2. Wondering if there's a way to accomplish:
+    1. Wondering if there's a way to accomplish:
        1. Dynamic props like React's spread operator
        2. "Two-way" data _packaging_ (aka. `v-model` in Vue, or a packaged getter/setter)
