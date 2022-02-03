@@ -3,6 +3,8 @@ import { curry } from 'https://unpkg.com/ramda@0.28.0/es';
 import AppStore, { removeItemByPlu, setQuantityByPlu } from '../store/index.js';
 
 const styles = html`<style>
+  @import 'global.css';
+
   ul {
     display: flex;
     flex-direction: column;

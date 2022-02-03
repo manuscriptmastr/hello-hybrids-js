@@ -1,6 +1,7 @@
 import { define, html } from 'https://unpkg.com/hybrids@^7';
 
 const styles = ({ gap, threshold }) => html`<style>
+  @import 'global.css';
   /* Adapted from "The Sidebar" layout from Every Layout */
   .layout {
     --threshold: ${threshold};

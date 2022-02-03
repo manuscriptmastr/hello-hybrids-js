@@ -4,6 +4,8 @@ import ITEMS from '../items.js';
 import AppStore, { addItemByPlu } from '../store/index.js';
 
 const styles = html`<style>
+  @import 'global.css';
+
   ul {
     display: grid;
     gap: var(--spacing-s);

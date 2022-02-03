@@ -1,6 +1,8 @@
 import { define, html } from 'https://unpkg.com/hybrids@^7';
 
-const styles = html`<style lang="scss" scoped>
+const styles = html`<style>
+  @import 'global.css';
+
   .tile {
     background-color: var(--color-neutral-white);
     border-radius: var(--spacing-xs);

@@ -1,6 +1,8 @@
 import { define, html } from 'https://unpkg.com/hybrids@^7';
 
 const styles = html`<style>
+  @import 'global.css';
+
   .checkout {
     height: 100%;
     overflow-y: scroll;

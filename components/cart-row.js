@@ -2,6 +2,8 @@ import { define, dispatch, html } from 'https://unpkg.com/hybrids@^7';
 import { range } from 'https://unpkg.com/ramda@0.28.0/es';
 
 const styles = html`<style>
+  @import 'global.css';
+
   article {
     align-items: center;
     border: 1px solid var(--color-neutral-grey-10);

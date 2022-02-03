@@ -14,6 +14,8 @@ serve .
 2. Using `define({ tag: string, ... })`
 3. Using `render()` and `html`
 4. Styles: Inline or separate declaration
+   - Shadow DOM and global styles: https://every-layout.dev/blog/eschewing-shadow-dom/
+     - Fix: `@import`
 5. Nested components: slots (different! Also always need closing tags)
    - <checkout-tile>`, `<checkout-layout>`, and `<sidebar-layout>`
 6. Nested components: render props, `connect()`, etc

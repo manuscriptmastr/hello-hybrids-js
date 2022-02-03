@@ -4,7 +4,9 @@
     "body": [
       "import { define, html } from 'https://unpkg.com/hybrids@^7';",
       "",
-      "const styles = html`<style></style>`;",
+      "const styles = html`<style>",
+      "  @import 'global.css';",
+      "</style>`;",
       "",
       "define({",
       "  tag: '${0:New Component}',",
