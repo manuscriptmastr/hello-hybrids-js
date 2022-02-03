@@ -7,7 +7,7 @@ const styles = html`<style>
   ul {
     display: grid;
     gap: var(--spacing-s);
-    grid-template-columns: repeat(auto-fit, minmax(Min(10rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
     list-style: none;
     margin: 0;
     padding: 0;
