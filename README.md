@@ -35,6 +35,7 @@ serve .
 13. Unit testing
 14. Forms
     - The bizarrely cool `children()` helper
+    - Problem: if property is unused by child's `render()` fn, the listening parent node won't get updated.
 15. Pros
     1. Easily get reference to store or DOM by ID. It's just an object or a DOM node. Which means you can easily inspect those values.
     2. Low-level, unopinionated, flexible API's let you write in different styles
