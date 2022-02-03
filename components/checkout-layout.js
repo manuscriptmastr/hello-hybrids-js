@@ -54,7 +54,7 @@ const styles = html`<style>
   }
 </style>`;
 
-define({
+export default define({
   tag: 'checkout-layout',
   title: '',
   render: ({ title }) => html`<div class="checkout">

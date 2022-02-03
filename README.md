@@ -19,7 +19,7 @@ serve .
 6. Nested components: render props, `connect()`, etc
    - Unusually difficult to achieve. You can always operate on the component object before passing to `define()`, but you can't pass complex data types through as props. (Dynamic props are also difficult, but mostly because we're used to passing them _through_ the template, rather than writing a function that returns `define()`). This makes refactoring into logic/presentation components awkward at best.
 7. Store: as a plain object with `store.get(id)`
-8. Store: as a DOM component (Dev Tools)
+8. Store: as a DOM component with `parent()`
 9. Store: with `connect()`
    - Was hoping to make unit testing easier by separating store-ful logic from an otherwise dumb component
    - Difficultly adding dynamic props to a component
@@ -32,6 +32,7 @@ serve .
     1. Shadow DOM
 13. Unit testing
 14. Forms
+    - The bizarrely cool `children()` helper
 15. Pros
     1. Easily get reference to store or DOM by ID. It's just an object or a DOM node. Which means you can easily inspect those values.
     2. Low-level, unopinionated, flexible API's let you write in different styles

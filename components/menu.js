@@ -55,7 +55,7 @@ const styles = html`<style>
 
 const handleClick = curry((plu, { store }) => addItemByPlu(store, plu));
 
-define({
+export default define({
   tag: 'app-menu',
   store: parent(AppStore),
   items: ({ store }) =>

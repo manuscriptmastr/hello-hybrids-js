@@ -23,7 +23,7 @@ const styles = ({ gap, threshold }) => html`<style>
   }
 </style>`;
 
-define({
+export default define({
   tag: 'sidebar-layout',
   threshold: '32ch',
   gap: '0',

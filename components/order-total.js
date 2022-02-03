@@ -2,7 +2,7 @@ import { define, html, parent } from 'https://unpkg.com/hybrids@^7';
 import AppStore from '../store/index.js';
 import { multiply, sum } from '../utils/money.js';
 
-define({
+export default define({
   tag: 'order-total',
   store: parent(AppStore),
   total: ({ store }) =>
@@ -11,6 +11,12 @@ define({
         multiply(price, quantity)
       )
     ),
-  render: ({ total }) =>
-    html`<checkout-tile title="Your Total">${total}</checkout-tile>`,
+  valid: ({ store }) => store.valid,
+  render: ({ total, valid }) =>
+    html`<checkout-tile title="Your Total"
+      ><p>Total: ${total}</p>
+      <button type="submit" disabled="${!valid}">
+        Submit Order
+      </button></checkout-tile
+    >`,
 });

@@ -36,7 +36,7 @@ const handleSelect = (host, event) =>
 
 const handleRemove = (host, event) => dispatch(host, 'remove');
 
-define({
+export default define({
   tag: 'cart-row',
   image: '',
   name: '',

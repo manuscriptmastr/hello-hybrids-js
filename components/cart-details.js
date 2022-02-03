@@ -25,7 +25,7 @@ const handleRemove = curry((plu, { store }, options) => {
   removeItemByPlu(store, plu);
 });
 
-define({
+export default define({
   tag: 'cart-details',
   store: parent(AppStore),
   cart: ({ store }) => store.cart,

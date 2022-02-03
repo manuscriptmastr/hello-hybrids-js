@@ -33,7 +33,7 @@ const styles = html`<style lang="scss" scoped>
   }
 </style>`;
 
-define({
+export default define({
   tag: 'checkout-tile',
   title: '',
   id: ({ title }) => title.replaceAll(/\s/g, '-').toLowerCase(),
