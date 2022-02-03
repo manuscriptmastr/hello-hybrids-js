@@ -42,6 +42,7 @@ serve .
 15. Cons
     1. Defining props feels a little clumsy, particular if they are primitives
     2. `html` util feels like it's doing too much. There's `html.resolve()`, `html.css()`, etc. These interfaces feel a little faddy/fragile.
+    3. Community seems rather small. Not much going on in social media, forums, and API documentation could be much more detailed
 16. Not sure/outstanding questions
     1. Referring to object/DOM ID's is both interesting and weird, but it's at least vanilla!
     2. Wondering if there's a way to accomplish:
