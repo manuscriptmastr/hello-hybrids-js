@@ -69,6 +69,25 @@ const testOrderTotalIs = (money) => {
   cy.get('order-total').shadow().contains(money);
 };
 
+const type = (label, text) => {
+  cy.get('customer-information')
+    .shadow()
+    .within(() => {
+      cy.get(`form-input[label="${label}"]`)
+        .shadow()
+        .within(() => {
+          cy.get('input').type(text, { force: true });
+        });
+    });
+};
+
+const testSubmitButtonIsDisabled = (disabled = true) => {
+  cy.get('order-total')
+    .shadow()
+    .contains('button', 'Submit Order')
+    .should(disabled ? 'be.disabled' : 'not.be.disabled');
+};
+
 describe('Checkout', () => {
   beforeEach(() => {
     cy.clearSessionStorage();
@@ -141,5 +160,15 @@ describe('Checkout', () => {
     testQuantityIs(CHEESE_BURGER, 2);
     testHasItemInCart(EGGS_BENEDICT);
     testQuantityIs(EGGS_BENEDICT, 3);
+  });
+  it('disallows user from submitting an order until the cart has at least one item and customer information is filled out', () => {
+    testSubmitButtonIsDisabled();
+    addItemToCart(AVOCADO_TOAST);
+    testSubmitButtonIsDisabled();
+    type('First Name', 'Joshua');
+    type('Last Name', 'Martin');
+    type('Email Address', 'me@me.com');
+    type('Phone Number', '555-666-7777');
+    testSubmitButtonIsDisabled(false);
   });
 });
