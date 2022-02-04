@@ -30,24 +30,24 @@ export default define({
           <form-input
             label="First Name"
             value="${firstName}"
-            onupdate="${(host, { detail }) => (host.firstName = detail)}"
+            oninput="${(host, { detail }) => (host.firstName = detail)}"
           ></form-input>
           <form-input
             label="Last Name"
             value="${lastName}"
-            onupdate="${(host, { detail }) => (host.lastName = detail)}"
+            oninput="${(host, { detail }) => (host.lastName = detail)}"
           ></form-input>
           <form-input
             label="Email Address"
             type="email"
             value="${emailAddress}"
-            onupdate="${(host, { detail }) => (host.emailAddress = detail)}"
+            oninput="${(host, { detail }) => (host.emailAddress = detail)}"
           ></form-input>
           <form-input
             label="Phone Number"
             type="tel"
             value="${phoneNumber}"
-            onupdate="${(host, { detail }) => (host.phoneNumber = detail)}"
+            oninput="${(host, { detail }) => (host.phoneNumber = detail)}"
           ></form-input>
         </form>
       </checkout-tile>`,

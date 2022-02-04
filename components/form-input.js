@@ -29,7 +29,7 @@ const CLEAVE_OPTIONS = {
 };
 
 const handleInput = (host, event) =>
-  dispatch(host, 'update', { detail: event.target.value });
+  dispatch(host, 'input', { detail: event.target.value });
 
 export const autoformat = {
   connect: (host, key, invalidate) => {
@@ -67,5 +67,10 @@ export default define({
   value: '',
   render: ({ label, type, value }) =>
     html`${styles}
-      <input type="${type}" value="${value}" placeholder="${label}" />`,
+      <input
+        type="${type}"
+        value="${value}"
+        placeholder="${label}"
+        oninput="${(host, event) => event.stopPropagation()}"
+      />`,
 });
