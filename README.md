@@ -37,6 +37,7 @@ serve .
     - The bizarrely cool `children()` helper
     - Problem: if property is unused by child's `render()` fn, the listening parent node won't get updated.
     - https://web.dev/more-capable-form-controls/
+    - Got excited about custom validation without abstractions, but Hybrids does not provide a way to interact directly with the class declaration to add `static formAssociated = true`, `attachInternals()`, etc. This and having zero lifecycles does seem to force awkward solutions when I need to access the class.
 15. Pros
     1. Easily get reference to store or DOM by ID. It's just an object or a DOM node. Which means you can easily inspect those values.
     2. Low-level, unopinionated, flexible API's let you write in different styles
