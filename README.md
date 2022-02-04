@@ -39,20 +39,22 @@ serve .
     - https://web.dev/more-capable-form-controls/
     - Got excited about custom validation without abstractions, but Hybrids does not provide a way to interact directly with the class declaration to add `static formAssociated = true`, `attachInternals()`, etc. This and having zero lifecycles does seem to force awkward solutions when I need to access the class.
 15. Pros
+    1. One of the few web component libraries that is functional-friendly and feels similar to React's functional style
     1. Easily get reference to store or DOM by ID. It's just an object or a DOM node. Which means you can easily inspect those values.
-    2. Low-level, unopinionated, flexible API's let you write in different styles
-    3. Computed props like Vue are delightfully easy to write, but pure unlike Vue
-    4. Need a store or context? You can define a store component wrapper like React
-    5. Named slots are wonderful, reminds me of Vue but it's the actual web
-    6. Lots of functions and explicit arguments like `host` makes refactoring so darn easy
-    7. Writing HTML feels just like writing JSX in React. No custom for-loop or if...else constructs, no directives. It's just JavaScript or HTML
-    8. You can pass down a handler like React, or emit a custom event like Vue or Angular. Your choice! It's flexible.
+    1. Low-level, unopinionated, flexible API's let you write in different styles
+    1. Computed props like Vue are delightfully easy to write, but pure unlike Vue
+    1. Need a store or context? You can define a store component wrapper like React
+    1. Named slots are wonderful, reminds me of Vue but it's the actual web
+    1. Lots of functions and explicit arguments like `host` makes refactoring so darn easy
+    1. Writing HTML feels just like writing JSX in React. No custom for-loop or if...else constructs, no directives. It's just JavaScript or HTML
+    1. You can pass down a handler like React, or emit a custom event like Vue or Angular. Your choice! It's flexible.
 16. Cons
+    1. Abstraction makes impossible to do the handful of cases where dealing directly with DOM/lifecycles makes perfect sense. I found the framework getting in my way particularly when building forms, setting up storage, and side effects in general.
     1. Defining props feels a little clumsy, particularly if they are primitives
-    2. `html` util feels like it's doing too much. There's `html.resolve()`, `html.css()`, etc. These interfaces feel a little faddy/fragile.
-    3. Community seems rather small. Not much going on in social media, forums, and API documentation could be much more detailed
-    4. No great way to do dynamic props like React's spread operator
-    5. No good "two-way" data _packaging_ (aka. `v-model` in Vue, or a packaged getter/setter)
+    1. `html` util feels like it's doing too much. There's `html.resolve()`, `html.css()`, etc. These interfaces feel a little faddy/fragile.
+    1. Community seems rather small. Not much going on in social media, forums, and API documentation could be much more detailed
+    1. No great way to do dynamic props like React's spread operator
+    1. No good "two-way" data _packaging_ (aka. `v-model` in Vue, or a packaged getter/setter)
 17. Not sure/outstanding questions
     1. This framework brings its own mini-paradigms around the concepts of the store and component refactoring. It has some elegant ways to accomplish these, but feels awkward once you impose other patterns (complex/dynamic props, higher order components) on it.
     2. Referring to object/DOM ID's is both interesting and weird, but it's at least vanilla!
