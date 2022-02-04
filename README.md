@@ -46,12 +46,11 @@ serve .
     7. Writing HTML feels just like writing JSX in React. No custom for-loop or if...else constructs, no directives. It's just JavaScript or HTML
     8. You can pass down a handler like React, or emit a custom event like Vue or Angular. Your choice! It's flexible.
 16. Cons
-    1. Defining props feels a little clumsy, particular if they are primitives
+    1. Defining props feels a little clumsy, particularly if they are primitives
     2. `html` util feels like it's doing too much. There's `html.resolve()`, `html.css()`, etc. These interfaces feel a little faddy/fragile.
     3. Community seems rather small. Not much going on in social media, forums, and API documentation could be much more detailed
+    4. No great way to do dynamic props like React's spread operator
+    5. No good "two-way" data _packaging_ (aka. `v-model` in Vue, or a packaged getter/setter)
 17. Not sure/outstanding questions
     1. This framework brings its own mini-paradigms around the concepts of the store and component refactoring. It has some elegant ways to accomplish these, but feels awkward once you impose other patterns (complex/dynamic props, higher order components) on it.
-    1. Referring to object/DOM ID's is both interesting and weird, but it's at least vanilla!
-    1. Wondering if there's a way to accomplish:
-       1. Dynamic props like React's spread operator
-       2. "Two-way" data _packaging_ (aka. `v-model` in Vue, or a packaged getter/setter)
+    2. Referring to object/DOM ID's is both interesting and weird, but it's at least vanilla!
