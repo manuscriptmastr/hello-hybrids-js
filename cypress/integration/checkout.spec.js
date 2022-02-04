@@ -169,6 +169,7 @@ describe('Checkout', () => {
     type('Last Name', 'Martin');
     type('Email Address', 'me@me.com');
     type('Phone Number', '555-666-7777');
+    type('Date of Birth', '01/01/2000');
     testSubmitButtonIsDisabled(false);
   });
 });
