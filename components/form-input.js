@@ -21,6 +21,10 @@ const styles = html`<style>
 </style>`;
 
 const CLEAVE_OPTIONS = {
+  date: {
+    date: true,
+    datePattern: ['m', 'd', 'Y'],
+  },
   tel: {
     phone: true,
     phoneRegionCode: 'US',
@@ -64,11 +68,12 @@ export default define({
   tag: 'form-input',
   label: '',
   type: autoformat,
+  _type: ({ type }) => (type === 'date' ? 'text' : type),
   value: '',
-  render: ({ label, type, value }) =>
+  render: ({ label, _type, value }) =>
     html`${styles}
       <input
-        type="${type}"
+        type="${_type}"
         value="${value}"
         placeholder="${label}"
         oninput="${(host, event) => event.stopPropagation()}"

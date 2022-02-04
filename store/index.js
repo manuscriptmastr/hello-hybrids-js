@@ -10,7 +10,18 @@ export default define({
   lastName: '',
   emailAddress: '',
   phoneNumber: '',
-  valid: ({ cart, firstName, lastName, emailAddress, phoneNumber }) =>
+  dateOfBirth: '',
+  valid: ({
+    cart,
+    firstName,
+    lastName,
+    emailAddress,
+    phoneNumber,
+    dateOfBirth,
+  }) =>
     !!cart.length &&
-    all((x) => x.length, [firstName, lastName, emailAddress, phoneNumber]),
+    all(
+      (x) => x.length,
+      [firstName, lastName, emailAddress, phoneNumber, dateOfBirth]
+    ),
 });

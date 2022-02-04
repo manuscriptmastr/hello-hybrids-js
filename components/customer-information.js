@@ -27,7 +27,8 @@ export default define({
   lastName: path(['store', 'lastName']),
   emailAddress: path(['store', 'emailAddress']),
   phoneNumber: path(['store', 'phoneNumber']),
-  render: ({ firstName, lastName, emailAddress, phoneNumber }) =>
+  dateOfBirth: path(['store', 'dateOfBirth']),
+  render: ({ firstName, lastName, emailAddress, phoneNumber, dateOfBirth }) =>
     html`${styles}<checkout-tile title="Customer Information">
         <form>
           <form-input
@@ -51,6 +52,12 @@ export default define({
             type="tel"
             value="${phoneNumber}"
             oninput="${handleInput('phoneNumber')}"
+          ></form-input>
+          <form-input
+            label="Date of Birth"
+            type="date"
+            value="${dateOfBirth}"
+            oninput="${handleInput('dateOfBirth')}"
           ></form-input>
         </form>
       </checkout-tile>`,
