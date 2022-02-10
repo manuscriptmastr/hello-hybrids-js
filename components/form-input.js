@@ -35,39 +35,37 @@ const CLEAVE_OPTIONS = {
 const handleInput = (host, event) =>
   dispatch(host, 'input', { detail: event.target.value });
 
-export const autoformat = {
-  connect: (host, key, invalidate) => {
-    const getInput = (host) => host.shadowRoot.querySelector('input');
-
-    setTimeout(() => {
-      const OPTIONS = CLEAVE_OPTIONS[host.type];
-      if (OPTIONS) {
-        getInput(host)['cleave'] = new Cleave(getInput(host), {
-          ...OPTIONS,
-          onValueChanged: (value) => handleInput(host, value),
-        });
-      } else {
-        getInput(host).addEventListener('input', (event) =>
-          handleInput(host, event)
-        );
-      }
-    }, 0);
-
-    return () => {
-      (getInput(host)['cleave'] || { destroy: () => {} }).destroy();
-      getInput(host).removeEventListener('input', (event) =>
-        handleInput(host, event)
-      );
-    };
-  },
-  get: (host, value) => value || 'text',
-  set: (host, value) => value,
-};
-
 export default define({
   tag: 'form-input',
   label: '',
-  type: autoformat,
+  type: {
+    connect: (host, key, invalidate) => {
+      const getInput = (host) => host.shadowRoot.querySelector('input');
+
+      setTimeout(() => {
+        const OPTIONS = CLEAVE_OPTIONS[host.type];
+        if (OPTIONS) {
+          getInput(host)['cleave'] = new Cleave(getInput(host), {
+            ...OPTIONS,
+            onValueChanged: (value) => handleInput(host, value),
+          });
+        } else {
+          getInput(host).addEventListener('input', (event) =>
+            handleInput(host, event)
+          );
+        }
+      }, 0);
+
+      return () => {
+        (getInput(host)['cleave'] || { destroy: () => {} }).destroy();
+        getInput(host).removeEventListener('input', (event) =>
+          handleInput(host, event)
+        );
+      };
+    },
+    get: (host, value) => value || 'text',
+    set: (host, value) => value,
+  },
   _type: ({ type }) => (type === 'date' ? 'text' : type),
   value: '',
   render: ({ label, _type, value }) =>
