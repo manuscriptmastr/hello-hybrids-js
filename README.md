@@ -1,9 +1,9 @@
-# Hello Web Components!
+# Hello `hybrids-js`!
 
 ## See it in action
 
 ```shell
-cd hello-web-components
+cd hello-hybrids-js
 npm install -g serve
 serve .
 ```
